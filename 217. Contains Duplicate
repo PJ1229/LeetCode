@@ -1,0 +1,14 @@
+#include <unordered_map>
+class Solution {
+public:
+    bool hasDuplicate(vector<int>& nums) {
+        unordered_map<int, int> frequency;
+        for(auto i:nums){
+            frequency[i]++;
+            if(frequency[i] > 1){
+                return true;
+            }
+        }
+        return false;
+    }
+};
