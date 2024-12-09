@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> map;
+        
+        for (const string& str : strs) {
+            int key_array[26] = {0};  // Simplified initialization
+            
+            // Count frequency of each character
+            for (char c : str) {
+                key_array[c - 'a']++;  // Assuming input only contains 'a'-'z'
+            }
+            
+            // Construct a unique key
+            string key;
+            for (int count : key_array) {
+                key += to_string(count) + "#";  // Add a delimiter for separation
+            }
+            
+            // Group anagrams
+            map[key].push_back(str);
+        }
+        
+        // Prepare result
+        vector<vector<string>> result;
+        for (const auto& elt : map) {
+            result.push_back(elt.second);
+        }
+        
+        return result;
+    }
+};
