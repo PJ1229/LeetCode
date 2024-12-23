@@ -1,0 +1,46 @@
+// code doesnt work with emoji's since they don't have ascii codes
+// dsa progress: had to look at optimal solution, found difficult
+
+class Solution {
+public:
+    string encode(vector<string>& strs) {
+        string output = "";
+        for(int i = 0; i < strs.size(); i++){
+            string current_string = strs[i];
+            for(int i=0; i<current_string.size(); i++){
+                int ascii = current_string[i];
+                output = output + to_string(ascii);
+                output = output + "-";
+            }
+            output = output + ".";
+        }
+        cout << "output: " << output << endl;
+        return output;
+    }
+
+    vector<string> decode(string s) {
+        string current_char = "";
+        string current_string = "";
+        vector<string> output = {};
+        for(int i=0; i < s.size(); i++){
+            cout << s[i] << " " << to_string(s[i]) << endl;
+            if(to_string(s[i]) == "45"){
+                current_string = current_string + char(stoi(current_char));
+                current_char = "";
+                cout << current_string << endl;
+            }
+            else if(to_string(s[i]) == "46"){
+                cout << current_string << endl;
+                output.push_back(current_string);
+                current_char = "";
+                current_string = "";
+            }
+            else{
+                current_char = current_char + s[i];
+            }
+            
+            
+        }
+        return output;
+    }
+};
