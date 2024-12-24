@@ -1,4 +1,4 @@
-//dsa progress: found solution with O(n^2) time that uses 2d vector, had to look at solution again :(
+//dsa progress: found solution with O(n^2) time that uses 2d vector, had to look at solution again
 
 class Solution {
 public:
